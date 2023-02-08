@@ -6,7 +6,14 @@ const getlist = async ()=>{
     console.log('List table : : '+queryResult.rows);
     return queryResult.rows;
 }
-
+const addToList = async(req,res)=>{
+    const dbclient = await dbConnect();
+    const queryresult = await dbclient.query('INSERT INTO  list_table (details,postedby,time_posted) VALUES ($1,$2,NOW())', [req.body.details,req.body.name])
+    console.log('requst body : : '+req.body);
+    console.log('db query  :  '+ queryresult);
+    return {result :{status:200, data:'ok'}};
+}
 module.exports = {
     getlist,
+    addToList,
 }

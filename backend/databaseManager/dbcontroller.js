@@ -11,8 +11,8 @@ const dbConnect = async ()=>{
         port: process.env.PGPORT,
         host: process.env.PGHOST
     });
-    connectedClient = await client.connect();
-    return connectedClient;
+    await client.connect();
+    return client;
 }
 catch(error){
     console.log('error in db : : '+error);
@@ -36,6 +36,7 @@ const dbSelectQuery = async(query)=>{
         console.log('error in db : : '+error);
     }
 }
+
 dbConnect();
 module.exports= {
     dbConnect,
