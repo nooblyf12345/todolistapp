@@ -1,0 +1,3 @@
+FROM postgres
+ENV POSTGRES_PASSWORD zubitemp
+ENV POSTGRES_DB todolst
